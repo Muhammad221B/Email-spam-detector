@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import sys
 from pathlib import Path
 import sys
@@ -9,11 +9,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'utils'))
 
 from utils.preprocessing import preprocess_text
 
-with open("models/rf_model.pkl", "rb") as f:
-    rf_model = pickle.load(f)
-
-with open("models/tfidf_vectorizer.pkl", "rb") as f:
-    tfidf = pickle.load(f)
+rf_model = joblib.load("models/rf_model.pkl")
+tfidf = joblib.load("models/tfidf_vectorizer.pkl")
 
 st.title("📩 Spam Detector")
 
