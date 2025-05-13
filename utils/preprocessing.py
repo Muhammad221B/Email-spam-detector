@@ -22,7 +22,10 @@ def preprocess_text(text):
     
     # Remove stopwords
     stop_words = set(stopwords.words('english'))
-    tokens = [word for word in tokens if word not in stop_words]
+    # Custom unwanted words (e.g., greeting or spammy words)
+    unwanted_words = {'hi', 'hello', 'dear', 'regards', 'thank', 'thanks', 'please'}
+    # Remove both stopwords and unwanted_words
+    tokens = [word for word in tokens if word not in stop_words and word not in unwanted_words]
     
     # Lemmatization
     lemmatizer = WordNetLemmatizer()
